@@ -1,0 +1,16 @@
+#!/bin/bash
+
+alias rcrefresh="source ~/.zshrc"
+alias purgeuser="sudo userdel -f -r"
+alias untar="tar -xvzf"
+alias g=git
+
+function gitssh {
+    if [ $# -eq 2 ]; then
+        git clone git@github.com:$1/$2.git
+    elif [ $# -eq 1 ]; then
+        git clone git@github.com:justinmuskopf/$1.git
+    else
+        echo "USAGE: gitssh [username] REPO"
+    fi
+}
