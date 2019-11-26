@@ -69,7 +69,6 @@ function new_server_user {
 
     curl_opts=( -s -d "recipient=${3}&secret=SECRET&ttl=${OTS_TTL}" -u "${OTS_USER}:${OTS_KEY}" https://onetimesecret.com/api/v1/generate )
     curl_output=`curl "${curl_opts[@]}"`
-    echo $curl_output
     new_password="`echo $curl_output | $PY_PATH -c "import sys, json; print(json.load(sys.stdin)['value'])"`"
     
     create_server_user $1 $2
